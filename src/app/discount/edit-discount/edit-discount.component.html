@@ -1,0 +1,91 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="discount">{{title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="discountForm" validate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="discountName">Name:</label>
+                        <input type="text" class="form-control" formControlName="name">
+                        <div *ngIf="discountForm.controls['name'].errors?.required">
+                            <span class="text-danger">
+                                Name is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="discountDescription">Description:</label>
+                        <textarea type="text" class="form-control" formControlName="description">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="percentage">Percentage:</label>
+                        <input type="number" class="form-control" formControlName="percentage">
+                        <div *ngIf="discountForm.controls['percentage'].errors?.required">
+                            <span class="text-danger">
+                                Percentage is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="priceCriteria">Price Criteria:</label>
+                        <input type="number" class="form-control" formControlName="priceCriteria">
+                        <div *ngIf="discountForm.controls['priceCriteria'].errors?.required">
+                            <span class="text-danger">
+                                Price Criteria is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12 btn-group-vertical">
+                        <label>
+                            <input type="radio" value="Monday" formControlName="dayOfWeek">
+                            <span>Monday</span>
+                        </label>
+                        <label>
+                            <input type="radio" value="Tuesday" formControlName="dayOfWeek">
+                            <span>Tuesday</span>
+                        </label>
+                        <label>
+                            <input type="radio" value="Wednesday" formControlName="dayOfWeek">
+                            <span>Wednesday</span>
+                        </label>
+                        <label>
+                            <input type="radio" value="Thursday" formControlName="dayOfWeek">
+                            <span>Thursday</span>
+                        </label>
+                        <label>
+                            <input type="radio" value="Friday" formControlName="dayOfWeek">
+                            <span>Friday</span>
+                        </label>
+
+                        <!-- <div *ngIf="discountForm.controls['dayOfWeek'].errors?.required">
+                            <span class="text-danger">
+                                Applicable On is required
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn btn-outline-dark" (click)="cancel()">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" (click)="save()" [disabled]="!discountForm.valid">
+            Save
+        </button>
+    </div>
+</div>

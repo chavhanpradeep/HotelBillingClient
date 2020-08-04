@@ -1,0 +1,53 @@
+<div class="login-container bg-light">
+  <div class="container">
+    <div class="card col-md-6 mt-3 mx-auto">
+      <div class="card-body">
+        <h4 class="card-title text-center">
+          <i class="far fa-3x fa-user-circle text-muted"></i>
+        </h4>
+        <ngb-tabset type="tabs">
+          <ngb-tab>
+            <ng-template ngbTabTitle>Login</ng-template>
+            <ng-template ngbTabContent>
+              <div class="card col-md-12 mt-3 mx-auto">
+                <div class="card-body">
+                  <div class="form-group">
+                    <form [formGroup]="pwdForm" novalidate>
+                      <label class="d-block">
+                        <input type="text" class="form-control" formControlName="username" autocomplete="username"
+                          [placeholder]="'Username'" />
+                        <span hidden>Username</span>
+                        <small [hidden]="pwdForm.controls.username.valid || pwdForm.controls.username.untouched"
+                          class="text-danger">
+                          username is required
+                        </small>
+                      </label>
+                      <label class="d-block">
+                        <input type="password" class="form-control" formControlName="password"
+                          autocomplete="current-password" [placeholder]="'Password'" required />
+                        <span hidden>Password</span>
+                        <small [hidden]="pwdForm.controls.password.valid || pwdForm.controls.password.untouched"
+                          class="text-danger">
+                          Password is required
+                        </small>
+                      </label>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" formControlName="remember" />
+                          <span>Remember me</span>
+                        </label>
+                      </div>
+                      <button class="btn btn-primary w-100" [disabled]="!pwdForm.valid" (click)="login()">
+                        <span>Login</span>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>

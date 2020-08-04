@@ -1,0 +1,57 @@
+<!-- <div class="container"> -->
+    <div class="form-group row">
+        <div class="col-md-6">
+            <h5>Menu Items</h5>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div style="float: right;">
+                <button class="btn btn-primary mr-2" (click)="addNew()">
+                    Add New
+                </button>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
+
+<!-- <div class="container"> -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let menuItem of menuItems">
+                <td>
+                    {{ menuItem.name }}
+                </td>
+                <td>
+                    {{ menuItem.price }}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary mr-2" (click)="edit(menuItem)">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" (click)="confirmDelete(menuItem?.id)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- </div> -->
+
+<!-- <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+    </ngb-pagination>
+  
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </div> -->

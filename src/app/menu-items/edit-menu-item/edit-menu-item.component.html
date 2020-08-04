@@ -1,0 +1,48 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="menu-item">{{title}} Menu Item</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="menuItemForm" validate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="menuItemName">Name :</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" formControlName="name">
+                        <div *ngIf="menuItemForm.controls['name'].errors?.required">
+                            <span class="text-danger">
+                                Name is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="menuItemPrice">Price :</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="number" class="form-control" formControlName="price">
+                        <div *ngIf="menuItemForm.controls['price'].errors?.required">
+                            <span class="text-danger">
+                                Price is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn btn-outline-dark" (click)="cancel()">Cancel</button>
+        <button type="button" class="btn btn-outline-primary" (click)="save()" [disabled]="!menuItemForm.valid">
+            Save
+        </button>
+    </div>
+</div>

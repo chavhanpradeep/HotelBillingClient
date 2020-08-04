@@ -1,0 +1,50 @@
+<div class="form-group">
+    <h4 class="modal-title">Register</h4>
+</div>
+<div>
+    <form class="needs-validation" [formGroup]="userForm" validate>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label class="col-form-label">Full Name</label>
+                <input type="text" class="form-control" formControlName="fullName" placeholder="Full Name" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label class="col-form-label">User Name</label>
+                <input type="text" class="form-control" formControlName="userName" placeholder="User Name" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label class="col-form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="Email" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label class="col-form-label">Phone Number</label>
+                <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Phone Number"
+                    required />
+                <small [hidden]="
+              userForm.controls.phoneNumber.valid ||
+              userForm.controls.phoneNumber.untouched ||
+              userForm.controls.phoneNumber.hasError('pattern')
+            " class="text-danger" translate>
+                    Phone number should be 10 digits, numbers only
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary mt-2 mb-2 my-2" (click)="addUser()"
+                    [disabled]="userForm.invalid" translate>
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,68 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="bill-summary">Bill Summary</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8 float-right">
+                    <div class="float-right">
+                        <label for="date">Date: </label>
+                        <span> {{date | date: 'dd MMM yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let billItem of billDetails">
+                    <td>
+                        {{ billItem.name }}
+                    </td>
+                    <td>
+                        {{ billItem.price }}
+                    </td>
+                    <td>
+                        {{ billItem.quantity}}
+                    </td>
+                    <td>
+                        {{ (billItem.price * billItem.quantity) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">Sub Total</td>
+                    <td>{{ subTotal() }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">VAT (5%)</td>
+                    <td>{{ vatAmount() }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Discount</td>
+                    <td>{{ discountAmount() }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>{{ billTotal() }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer">
+            <button type="button" class="btn btn-primary" (click)="placeOrder()">Place Order</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="form-group row">
+    <div class="col-md-6">
+        <h5>Bills</h5>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Generated On</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let bill of bills">
+            <td>
+                {{ bill.customerName }}
+            </td>
+            <td>
+                {{ bill.totalPrice.toFixed(2) }}
+            </td>
+            <td>
+                {{ bill.billGeneratedOn | date: 'dd MMM yyyy' }}
+            </td>
+            <td>
+                <!-- <button class="btn btn-outline-warning" (click)="viewBill(bill.pdfPath)">View Bill</button> -->
+                <a href="file:///{{bill.pdfPath}}" class="btn btn-outline-warning" role="button">View Bill</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

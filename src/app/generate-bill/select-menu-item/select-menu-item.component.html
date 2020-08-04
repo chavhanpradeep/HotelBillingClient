@@ -1,0 +1,35 @@
+<br>
+<div class="container">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let menuItem of menuItemList; let i = index">
+                <div class="card mb-4 shadow-sm">
+                    <img class="img-fluid" src="{{ tempImage }}" />
+                    <div class="card-body">
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="customCheck + {{i}}" [(ngModel)]="menuItem.isSelected">
+                            <label class="custom-control-label" for="customCheck + {{i}}">
+                                {{ menuItem?.name }}
+                            </label>
+                        </div>
+                        <select class="custom-select custom-select-sm" id="quantity" [(ngModel)]="menuItem.quantity">
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                            <option [ngValue]="3">3</option>
+                            <option [ngValue]="4">4</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <button class="btn btn-danger btn-block" (click)="loadBillSummary()">Generate Bill</button>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
